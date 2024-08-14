@@ -2,13 +2,20 @@
 # Internal intialization script for Zumate nodes running Minecraft.
 # by @zayaanar on Discord or @userandaname on GitHub
 
-PLAYIT_PID=$(pgrep -f playit)
+playit_status=$1
+server_port=$2
+query_port=$2
+jarfile=$3
+hostname=$4
 
-if [ ! -z "$PLAYIT_PID" ]; then
-    kill "$PLAYIT_PID"
+container="/home/container"
+playit_pid=$(pgrep -f playit)
+
+if [ ! -z "$playit_pid" ]; then
+    kill "$playit_pid"
 fi
 
-if [ {{PLAYIT_STATUS}} = false ]; then
+if [ "$playit_status" = false ]; then
     echo "playit.gg has been disabled by the end-user. Skipping installation sequence..."
 else
     if [ ! -f playit ]; then
@@ -19,7 +26,7 @@ else
     if [ ! -f playit.toml ]; then
         clear
         echo "playit.gg needs to be configured to remotely connect to your server."
-        echo "Ensure that your new tunnel is set to 127.0.0.1:"{{server.build.default.port}}
+        echo "Ensure that your new tunnel is set to 127.0.0.1:$server_port"
         echo "For help, contact @zayaanar on Discord."
         echo "Type anything in console to continue..."
         read choice
@@ -29,4 +36,5 @@ else
     fi
 fi
 
-java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar {{SERVER_JARFILE}}
+cd $container
+java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar $jarfile
