@@ -12,7 +12,7 @@ if [ {{PLAYIT_STATUS}} = false ]; then
     echo "playit.gg has been disabled by the end-user. Skipping installation sequence..."
 else
     if [ ! -f playit ]; then
-        curl -Lo playit https://github.com/playit-cloud/playit-agent/releases/latest/download/playit-amd64
+        curl -Lo playit https://github.com/playit-cloud/playit-agent/releases/download/v0.15.19/playit-linux-amd64
         chmod +x playit
     fi
 
