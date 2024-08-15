@@ -17,7 +17,7 @@ if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
 fi
 
-if [ "$playit_status" = false ]; then
+if [ "$playit_status" = 0 ]; then
     clear
     echo "playit.gg integration - $vernum - @zayaanar"
     echo "------------------------------------------------------------------------------"
