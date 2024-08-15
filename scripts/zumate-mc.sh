@@ -11,6 +11,7 @@ hostname=$4
 container="/home/container"
 zumate="/home/container/zumate"
 playit_pid=$(pgrep -f playit)
+vernum="v1.0.2p"
 
 if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
@@ -18,14 +19,14 @@ fi
 
 if [ "$playit_status" = false ]; then
     clear
-    echo "playit.gg integration - @zayaanar"
+    echo "playit.gg integration - $vernum - @zayaanar"
     echo "------------------------------------------------------------------------------"
     echo "playit.gg integration has been disabled. Skipping installation sequence..."
     echo "------------------------------------------------------------------------------"
     echo " "
 else
     clear
-    echo "playit.gg integration - @zayaanar"
+    echo "playit.gg integration - $vernum - @zayaanar"
     echo "------------------------------------------------------------------------------"
     echo " "
     echo "Verifying authenticity of playit-agent..."
@@ -38,7 +39,7 @@ else
 
     if [ ! -f playit.toml ]; then
         clear
-        echo "playit.gg integration - @zayaanar"
+        echo "playit.gg integration - $vernum - @zayaanar"
         echo "------------------------------------------------------------------------------"
         echo " "
         echo "playit.gg needs to be configured to remotely connect to your server."
@@ -59,7 +60,7 @@ else
 
             if [[ -n "$url" ]]; then
                 clear
-                echo "playit.gg integration - @zayaanar"
+                echo "playit.gg integration - $vernum - @zayaanar"
                 echo "------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
@@ -82,7 +83,7 @@ else
 
             if [[ -n "$tunnelFound" ]]; then
                 clear
-                echo "playit.gg integration - @zayaanar"
+                echo "playit.gg integration - $vernum - @zayaanar"
                 echo "------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
@@ -105,7 +106,7 @@ else
 
             if [[ -n "$tunnelVerified" ]]; then
                 clear
-                echo "playit.gg integration - @zayaanar"
+                echo "playit.gg integration - $vernum - @zayaanar"
                 echo "------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
@@ -125,7 +126,7 @@ else
 
         read -p ""
         clear
-        echo "playit.gg integration - @zayaanar"
+        echo "playit.gg integration - $vernum - @zayaanar"
         echo "------------------------------------------------------------------------------"
         echo " "
         echo "playit.gg needs to be configured to remotely connect to your server."
