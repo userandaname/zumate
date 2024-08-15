@@ -1,5 +1,5 @@
 #!/bin/bash
-# Internal initialization script for Zumate nodes running Minecraft.
+# Internal initialization script for Zumate nodes running Minecraft, with embedded playit.gg support.
 # by @zayaanar on Discord or @userandaname on GitHub
 
 playit_status=$1
