@@ -2,9 +2,6 @@
 # Internal initialization script for Zumate nodes running Minecraft.
 # by @zayaanar on Discord or @userandaname on GitHub
 
-printf "hi\n"
-read hi
-
 playit_status=$1
 server_port=$2
 query_port=$2
