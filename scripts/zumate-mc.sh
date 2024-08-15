@@ -7,11 +7,12 @@ server_port=$2
 query_port=$2
 jarfile=$3
 hostname=$4
+software=$5
 
 container="/home/container"
 zumate="/home/container/zumate"
 playit_pid=$(pgrep -f playit)
-vernum="v1.0.2p"
+vernum="v1.0.3p"
 
 if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
@@ -145,4 +146,9 @@ else
 fi
 
 cd $container
-java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar $jarfile
+
+if [ "$software" = "PaperMC" ]; then
+    java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar $jarfile
+elif [ "$software" = "Forge" ]; then
+    java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s "-jar $jarfile" || printf %s "@unix_args.txt" )
+fi
