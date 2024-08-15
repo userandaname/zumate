@@ -36,6 +36,7 @@ else
     mv $container/playit $zumate/playit
     cd $zumate
     echo "------------------------------------------------------------------------------"
+    echo " "
 
     if [ ! -f playit.toml ]; then
         clear
