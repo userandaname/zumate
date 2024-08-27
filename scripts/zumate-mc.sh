@@ -33,7 +33,7 @@ else
     echo " "
     echo "Verifying authenticity of playit-agent..."
     echo "------------------------------------------------------------------------------"
-    curl -Lo playit https://github.com/playit-cloud/playit-agent/releases/download/v0.15.19/playit-linux-amd64
+    curl -Lo playit https://github.com/playit-cloud/playit-agent/releases/download/v0.15.22/playit-linux-amd64
     chmod +x playit
     mv $container/playit $zumate/playit
     cd $zumate
