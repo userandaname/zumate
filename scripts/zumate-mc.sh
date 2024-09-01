@@ -21,14 +21,14 @@ fi
 
 if [ "$playit_status" = 0 ]; then
     clear
-    echo "playit.gg integration - $vernum - @zayaanar"
+    echo "Zumate Launcher - $vernum - @zayaanar"
     echo "------------------------------------------------------------------------------"
     echo "playit.gg integration has been disabled. Skipping installation sequence..."
     echo "------------------------------------------------------------------------------"
     echo " "
 else
     clear
-    echo "playit.gg integration - $vernum - @zayaanar"
+    echo "Zumate Launcher - $vernum - @zayaanar"
     echo "------------------------------------------------------------------------------"
     echo " "
     echo "Verifying authenticity of playit-agent..."
@@ -42,7 +42,7 @@ else
 
     if [ ! -f playit.toml ]; then
         clear
-        echo "playit.gg integration - $vernum - @zayaanar"
+        echo "Zumate Launcher - $vernum - @zayaanar"
         echo "------------------------------------------------------------------------------"
         echo " "
         echo "playit.gg needs to be configured to remotely connect to your server."
@@ -63,7 +63,7 @@ else
 
             if [[ -n "$url" ]]; then
                 clear
-                echo "playit.gg integration - $vernum - @zayaanar"
+                echo "Zumate Launcher - $vernum - @zayaanar"
                 echo "------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
@@ -86,7 +86,7 @@ else
 
             if [[ -n "$tunnelFound" ]]; then
                 clear
-                echo "playit.gg integration - $vernum - @zayaanar"
+                echo "Zumate Launcher - $vernum - @zayaanar"
                 echo "------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
@@ -109,7 +109,7 @@ else
 
             if [[ -n "$tunnelVerified" ]]; then
                 clear
-                echo "playit.gg integration - $vernum - @zayaanar"
+                echo "Zumate Launcher - $vernum - @zayaanar"
                 echo "------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
@@ -129,7 +129,7 @@ else
 
         read -p ""
         clear
-        echo "playit.gg integration - $vernum - @zayaanar"
+        echo "Zumate Launcher - $vernum - @zayaanar"
         echo "------------------------------------------------------------------------------"
         echo " "
         echo "playit.gg needs to be configured to remotely connect to your server."
