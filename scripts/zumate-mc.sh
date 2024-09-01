@@ -13,7 +13,7 @@ software=$6
 container="/home/container"
 zumate="/home/container/zumate"
 playit_pid=$(pgrep -f playit)
-vernum="v1.0.4p"
+vernum="v1.0.6p"
 
 if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
