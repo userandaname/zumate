@@ -1,6 +1,6 @@
 #!/bin/bash
-# Internal initialization script for Zumate nodes running Minecraft, with embedded playit.gg support.
-# by @zayaanar on Discord or @userandaname on GitHub
+# Internal initialization script for Minecraft servers running on Zumate nodes, with embedded playit.gg support.
+# by @zayaanar on Discord or @userandaname on GitHub.
 
 playit_status=$1
 server_port=$2
@@ -10,10 +10,11 @@ hostname=$4
 memory=$5
 software=$6
 
+agentURL="https://github.com/playit-cloud/playit-agent/releases/download/v0.15.22/playit-linux-amd64"
 container="/home/container"
 zumate="/home/container/zumate"
 playit_pid=$(pgrep -f playit)
-vernum="v1.0.6p"
+vernum="v1.0.7p"
 
 if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
@@ -22,38 +23,39 @@ fi
 if [ "$playit_status" = 0 ]; then
     clear
     echo "Zumate Launcher - $vernum - @zayaanar"
-    echo "------------------------------------------------------------------------------"
-    echo "playit.gg integration has been disabled. Skipping installation sequence..."
-    echo "------------------------------------------------------------------------------"
+    echo "--------------------------------------------------------------------------------"
+    echo "playit.gg integration has been disabled."
+    echo "Starting Minecraft..."
+    echo "--------------------------------------------------------------------------------"
     echo " "
 else
     clear
     echo "Zumate Launcher - $vernum - @zayaanar"
-    echo "------------------------------------------------------------------------------"
+    echo "--------------------------------------------------------------------------------"
     echo " "
-    echo "Verifying authenticity of playit-agent..."
-    echo "------------------------------------------------------------------------------"
-    curl -Lo playit https://github.com/playit-cloud/playit-agent/releases/download/v0.15.22/playit-linux-amd64
+    echo "Verifying playit-agent, please wait..."
+    echo "--------------------------------------------------------------------------------"
+    curl -Lo playit $agentURL
     chmod +x playit
     mv $container/playit $zumate/playit
     cd $zumate
-    echo "------------------------------------------------------------------------------"
+    echo "--------------------------------------------------------------------------------"
     echo " "
 
     if [ ! -f playit.toml ]; then
         clear
-        echo "Zumate Launcher - $vernum - @zayaanar"
-        echo "------------------------------------------------------------------------------"
+        echo "Zumate Launcher - $vernum"
+        echo "--------------------------------------------------------------------------------"
         echo " "
         echo "playit.gg needs to be configured to remotely connect to your server."
         echo "Otherwise, turn off playit.gg integration to skip this."
         echo "Once Setup finishes, restart your server to continue."
         echo "For help, contact @zayaanar on Discord."
         echo " "
-        echo "------------------------------------------------------------------------------"
+        echo "--------------------------------------------------------------------------------"
         echo "Grabbing setupURL..."
         echo "Please wait..."
-        echo "------------------------------------------------------------------------------"
+        echo "--------------------------------------------------------------------------------"
 
         cd $zumate
         ./playit --secret_path=$zumate/playit.toml > setupLogs.log 2>&1 &
@@ -63,18 +65,18 @@ else
 
             if [[ -n "$url" ]]; then
                 clear
-                echo "Zumate Launcher - $vernum - @zayaanar"
-                echo "------------------------------------------------------------------------------"
+                echo "Zumate Launcher - $vernum"
+                echo "--------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
                 echo "Otherwise, turn off playit.gg integration to skip this."
                 echo "Once Setup finishes, restart your server to continue."
                 echo "For help, contact @zayaanar on Discord."
                 echo " "
-                echo "------------------------------------------------------------------------------"
+                echo "--------------------------------------------------------------------------------"
                 echo "To setup this server with playit.gg, please visit $url"
                 echo "Setup will continue once you've connected this server with playit.gg."
-                echo "------------------------------------------------------------------------------"
+                echo "--------------------------------------------------------------------------------"
                 break
             fi
 
@@ -86,18 +88,18 @@ else
 
             if [[ -n "$tunnelFound" ]]; then
                 clear
-                echo "Zumate Launcher - $vernum - @zayaanar"
-                echo "------------------------------------------------------------------------------"
+                echo "Zumate Launcher - $vernum"
+                echo "--------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
                 echo "Otherwise, turn off playit.gg integration to skip this."
                 echo "Once Setup finishes, restart your server to continue."
                 echo "For help, contact @zayaanar on Discord."
                 echo " "
-                echo "------------------------------------------------------------------------------"
+                echo "--------------------------------------------------------------------------------"
                 echo "Almost there! Create a minecraft-java tunnel pointing to 127.0.0.1:$server_port."
                 echo "Waiting for valid tunnel..."
-                echo "------------------------------------------------------------------------------"
+                echo "--------------------------------------------------------------------------------"
                 break
             fi
 
@@ -109,18 +111,18 @@ else
 
             if [[ -n "$tunnelVerified" ]]; then
                 clear
-                echo "Zumate Launcher - $vernum - @zayaanar"
-                echo "------------------------------------------------------------------------------"
+                echo "Zumate Launcher - $vernum"
+                echo "--------------------------------------------------------------------------------"
                 echo " "
                 echo "playit.gg needs to be configured to remotely connect to your server."
                 echo "Otherwise, turn off playit.gg integration to skip this."
                 echo "Once Setup finishes, restart your server to continue."
                 echo "For help, contact @zayaanar on Discord."
                 echo " "
-                echo "------------------------------------------------------------------------------"
+                echo "--------------------------------------------------------------------------------"
                 echo "Tunnel verified! Setup is now complete."
                 echo "Type anything in console to restart the server and finish setup."
-                echo "------------------------------------------------------------------------------"
+                echo "--------------------------------------------------------------------------------"
                 break
             fi
 
@@ -129,20 +131,27 @@ else
 
         read -p ""
         clear
-        echo "Zumate Launcher - $vernum - @zayaanar"
-        echo "------------------------------------------------------------------------------"
+        echo "Zumate Launcher - $vernum"
+        echo "--------------------------------------------------------------------------------"
         echo " "
         echo "playit.gg needs to be configured to remotely connect to your server."
         echo "Otherwise, turn off playit.gg integration to skip this."
         echo "Once Setup finishes, restart your server to continue."
         echo "For help, contact @zayaanar on Discord."
         echo " "
-        echo "------------------------------------------------------------------------------"
-        echo "Finishing Setup..."
-        echo "------------------------------------------------------------------------------"
+        echo "--------------------------------------------------------------------------------"
+        echo "Starting Minecraft..."
+        echo "--------------------------------------------------------------------------------"
         echo " "
     else
         ./playit --secret_path=$zumate/playit.toml 1>/dev/null 2>/dev/null &
+        clear
+        echo "Zumate Launcher - $vernum"
+        echo "--------------------------------------------------------------------------------"
+        echo "Verified and started playit-agent!"
+        echo "Starting Minecraft..."
+        echo "--------------------------------------------------------------------------------"
+        echo " "
     fi
 fi
 
