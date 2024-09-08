@@ -10,11 +10,11 @@ hostname=$4
 memory=$5
 software=$6
 
-agentURL="https://github.com/playit-cloud/playit-agent/releases/download/v0.15.22/playit-linux-amd64"
+agentURL="https://github.com/playit-cloud/playit-agent/releases/download/v0.15.23/playit-linux-amd64"
 container="/home/container"
 zumate="/home/container/zumate"
 playit_pid=$(pgrep -f playit)
-vernum="v1.0.7p"
+vernum="v1.0.8p"
 
 if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
