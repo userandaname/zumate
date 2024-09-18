@@ -11,10 +11,12 @@ memory=$5
 software=$6
 
 agentURL="https://github.com/playit-cloud/playit-agent/releases/download/v0.15.23/playit-linux-amd64"
-container="/home/container"
 zumate="/home/container/zumate"
 playit_pid=$(pgrep -f playit)
-vernum="v1.0.8p"
+container="/home/container"
+neoforge_vernum="forge/1.20.1-47.1.104"
+# neoforge_vernum="neoforge/20.2.88"
+vernum="v1.0.9p"
 
 if [ ! -z "$playit_pid" ]; then
     kill "$playit_pid"
@@ -159,6 +161,8 @@ cd $container
 
 if [ "$software" = "PaperMC" ]; then
     java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true -jar $jarfile
+elif [ "$software" = "NeoForge" ]; then
+    java -Xms128M -Xmx"$memory"M @libraries/net/neoforged/$neoforge_vernum/unix_args.txt "$@" --nogui
 elif [ "$software" = "Forge" ]; then
     java -Xms128M -XX:MaxRAMPercentage=95.0 -Dterminal.jline=false -Dterminal.ansi=true $( [[  ! -f unix_args.txt ]] && printf %s "-jar $jarfile" || printf %s "@unix_args.txt" )
 elif [ "$software" = "Fabric" ]; then
